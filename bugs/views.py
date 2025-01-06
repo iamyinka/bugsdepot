@@ -15,9 +15,9 @@ def bug_create(request):
         bug_form = BugForm(request.POST)
         files = request.FILES.getlist('screenshots')
         if bug_form.is_valid():
-            bug_form.save(commit=False)
-            bug_form.author = request.user
-            bug_form.save()
+            bug = bug_form.save(commit=False)
+            bug.author = request.user
+            bug.save()
             for file in files:
                 screenshot_form = BugScreenshotForm({'image': file}, {'image': file})
                 if screenshot_form.is_valid():
