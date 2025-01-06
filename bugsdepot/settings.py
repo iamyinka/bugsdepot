@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET')
 DEBUG = bool(os.getenv('DEBUG'))
 
 if DEBUG:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['bugs.digitalcareers.academy']
 else:
     ALLOWED_HOSTS = [
         'bugs.digitalcareers.academy',    
