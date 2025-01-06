@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2>{{ bug.title }}</h2>
+        <p class="text-muted">Created on: {{ bug.created_at }}</p>
+        <p>Project: <strong>{{ bug.project.name }}</strong></p>
+        <p>Description:</p>
+        <p>{{ bug.description }}</p>
+        <p>Priority: <span class="badge bg-{{ bug.priority|lower }}">{{ bug.priority }}</span></p>
+        <p>Status: <span class="badge bg-info">{{ bug.status }}</span></p>
+        <h5>Screenshots:</h5>
+        <div class="row">
+            {% for screenshot in bug.screenshots.all %}
+            <div class="col-md-4">
+                <img src="{{ screenshot.image.url }}" class="img-thumbnail" alt="Screenshot">
+            </div>
+            {% empty %}
+            <p>No screenshots available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<a href="{% url 'bug_list' %}" class="btn btn-secondary mt-3">Back to Bug List</a>
+{% endblock %}

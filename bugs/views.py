@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Bug, BugScreenshot
 from .forms import BugForm, BugScreenshotForm
 
@@ -27,3 +27,8 @@ def bug_create(request):
     else:
         bug_form = BugForm()
     return render(request, 'bugs/bug_form.html', {'form': bug_form})
+
+
+def bug_detail(request, bug_id):
+    bug = get_object_or_404(Bug, id=bug_id)
+    return render(request, 'bugs/bug_detail.html', {'bug': bug})

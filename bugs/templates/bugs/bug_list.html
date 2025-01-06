@@ -1,28 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Bug List</h2>
-<a href="{% url 'bug_create' %}" class="btn btn-primary mb-3">Report a Bug</a>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Project</th>
-            <th>Created At</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for bug in bugs %}
-        <tr>
-            <td>{{ bug.title }}</td>
-            <td>{{ bug.priority }}</td>
-            <td>{{ bug.status }}</td>
-            <td>{{ bug.project.name }}</td>
-            <td>{{ bug.created_at }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Bug List</h2>
+    <a href="{% url 'bug_create' %}" class="btn btn-primary">Report a Bug</a>
+</div>
+<div class="row">
+    {% for bug in bugs %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ bug.title }}</h5>
+                <p class="card-text">
+                    Priority: 
+                    <span class="badge bg-{{ bug.priority|lower }}">{{ bug.priority }}</span>
+                    <br>
+                    Status: <span class="badge bg-info">{{ bug.status }}</span>
+                </p>
+                <a href="{% url 'bug_detail' bug.id %}" class="btn btn-secondary">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

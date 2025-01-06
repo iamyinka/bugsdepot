@@ -4,7 +4,7 @@ from .models import Bug, BugScreenshot
 class BugForm(forms.ModelForm):
     class Meta:
         model = Bug
-        fields = ['title', 'description', 'project', 'priority', 'status']
+        fields = ['title', 'description', 'project', 'priority']
 
 
 class BugScreenshotForm(forms.ModelForm):

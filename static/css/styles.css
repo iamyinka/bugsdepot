@@ -1,0 +1,66 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badge.bg-low {
+  background-color: #198754; /* Green */
+}
+
+.badge.bg-medium {
+  background-color: #ffc107; /* Yellow */
+}
+
+.badge.bg-high {
+  background-color: #dc3545; /* Red */
+}
+
+/* General styles for the form card */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form input fields */
+.form-control-lg {
+  border: 2px solid #ced4da;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control-lg:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Form labels */
+.form-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+/* Button styles */
+.btn-lg {
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-lg:hover {
+  background-color: #0056b3;
+}
+
+/* Card title styling */
+.text-primary {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Spacing and alignment */
+.d-grid {
+  margin-top: 1rem;
+}

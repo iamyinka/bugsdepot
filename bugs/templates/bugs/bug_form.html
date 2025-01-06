@@ -1,14 +1,44 @@
 {% extends 'base.html' %}
-
+{% load widget_tweaks %}
 {% block content %}
-<h2>Report a Bug</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="mb-3">
-        <label for="screenshots" class="form-label">Screenshots</label>
-        <input type="file" name="screenshots" id="screenshots" class="form-control" multiple>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-4">
+                <h2 class="text-center mb-4 text-primary">Report a Bug</h2>
+                {% if error %}
+                <div class="alert alert-danger text-center">{{ error }}</div>
+                {% endif %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Bug Title</label>
+                        {% render_field form.title class="form-control form-control-lg" placeholder="Enter bug title" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        {% render_field form.description class="form-control form-control-lg" placeholder="Describe the bug" rows="4" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="project" class="form-label">Project</label>
+                        {% render_field form.project class="form-select form-select-lg" %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="priority" class="form-label">Priority</label>
+                        {% render_field form.priority class="form-select form-select-lg" %}
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label for="screenshots" class="form-label">Upload Screenshots</label>
+                        <input type="file" name="screenshots" id="screenshots" class="form-control form-control-lg" multiple accept=".jpg, .jpeg, .png">
+                        <small class="text-muted">Only .jpg, .jpeg, and .png files are allowed.</small>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit Bug Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
+</div>
 {% endblock %}
