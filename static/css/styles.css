@@ -64,3 +64,39 @@ body {
 .d-grid {
   margin-top: 1rem;
 }
+
+/* Card Styling */
+.card {
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Fields */
+.form-control-lg {
+  border-radius: 6px;
+  border: 2px solid #ced4da;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control-lg:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Center alignment */
+.text-center {
+  font-weight: bold;
+  color: #495057;
+}

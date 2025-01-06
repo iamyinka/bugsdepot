@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 def validate_file_extension(value):
@@ -9,6 +10,7 @@ def validate_file_extension(value):
 class Project(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, unique=True, db_index=True, default=uuid.uuid4)
     name = models.CharField(max_length=100)
+    url = models.URLField(null=True)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -34,6 +36,7 @@ class Bug(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='Open')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reports')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

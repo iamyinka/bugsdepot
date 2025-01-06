@@ -16,6 +16,8 @@
                     <span class="badge bg-{{ bug.priority|lower }}">{{ bug.priority }}</span>
                     <br>
                     Status: <span class="badge bg-info">{{ bug.status }}</span>
+                    <br>
+                    Reported by: <strong>{{ bug.author }} </strong> for  {{ bug.project }}
                 </p>
                 <a href="{% url 'bug_detail' bug.id %}" class="btn btn-secondary">View Details</a>
             </div>

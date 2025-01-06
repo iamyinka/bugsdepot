@@ -1,12 +1,15 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Bug, BugScreenshot
 from .forms import BugForm, BugScreenshotForm
+
 
 def bug_list(request):
     bugs = Bug.objects.all()
     return render(request, 'bugs/bug_list.html', {'bugs': bugs})
 
 
+@login_required(login_url='login')
 def bug_create(request):
     if request.method == 'POST':
         bug_form = BugForm(request.POST)
@@ -29,6 +32,7 @@ def bug_create(request):
     return render(request, 'bugs/bug_form.html', {'form': bug_form})
 
 
+@login_required(login_url='login')
 def bug_detail(request, bug_id):
     bug = get_object_or_404(Bug, id=bug_id)
     return render(request, 'bugs/bug_detail.html', {'bug': bug})
