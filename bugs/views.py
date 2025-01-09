@@ -1,12 +1,13 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Bug, BugScreenshot
+from .models import Bug, BugScreenshot, Project
 from .forms import BugForm, BugScreenshotForm
 
 
 def bug_list(request):
     bugs = Bug.objects.all()
-    return render(request, 'bugs/bug_list.html', {'bugs': bugs})
+    projects = Project.objects.all()
+    return render(request, 'bugs/bug_list.html', {'bugs': bugs, "projects": projects})
 
 
 @login_required(login_url='login')
